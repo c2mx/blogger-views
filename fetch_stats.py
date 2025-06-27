@@ -17,7 +17,7 @@ res = requests.post("https://oauth2.googleapis.com/token", data={
     'grant_type': 'refresh_token'
 })
 access_token = res.json().get("access_token")
-print("access_token", access_token )
+
 if not access_token:
     raise Exception("Failed to refresh access token")
 
@@ -26,9 +26,6 @@ resp = requests.get(
     f'https://blogger.googleapis.com/v3/blogs/{BLOG_ID}/pageviews?range=all',
     headers={'Authorization': f'Bearer {access_token}'}
 )
-
-print("Status Code:", resp.status_code)
-print("Response Text:", resp.text)  # 打印原始内容（很关键）
 
 if resp.status_code != 200:
     raise Exception("Failed to fetch data")
