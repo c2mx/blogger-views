@@ -25,7 +25,15 @@ resp = requests.get(
     f'https://www.googleapis.com/blogger/v3/blogs/{BLOG_ID}/pageViews?range=all',
     headers={'Authorization': f'Bearer {access_token}'}
 )
+
+print("Status Code:", resp.status_code)
+print("Response Text:", resp.text)  # 打印原始内容（很关键）
+
+if resp.status_code != 200:
+    raise Exception("Failed to fetch data")
+
 data = resp.json()
+
 view_count = data['counts'][0]['count']
 
 # 加载旧数据并追加
