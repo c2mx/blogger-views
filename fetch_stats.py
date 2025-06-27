@@ -17,6 +17,7 @@ res = requests.post("https://oauth2.googleapis.com/token", data={
     'grant_type': 'refresh_token'
 })
 access_token = res.json().get("access_token")
+print("access_token", access_token )
 if not access_token:
     raise Exception("Failed to refresh access token")
 
