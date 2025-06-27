@@ -2,8 +2,8 @@ name: Fetch Blogger Stats
 
 on:
   schedule:
-    - cron: '*/30 * * * *' # 每 30 分钟执行一次
-  workflow_dispatch:       # 支持手动触发
+    - cron: '*/30 * * * *'  # 每 30 分钟执行一次
+  workflow_dispatch:         # 支持手动触发
 
 jobs:
   fetch-and-save:
@@ -33,8 +33,8 @@ jobs:
 
       - name: Commit & Push if changed
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/stats.json
           git diff --cached --quiet || git commit -m "Update stats.json [CI]"
           git push
