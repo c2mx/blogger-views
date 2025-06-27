@@ -23,7 +23,7 @@ if not access_token:
 
 # 获取访问数据
 resp = requests.get(
-    f'https://www.googleapis.com/blogger/v3/blogs/{BLOG_ID}/pageViews?range=all',
+    f'https://blogger.googleapis.com/v3/blogs/{BLOG_ID}/pageviews?range=all',
     headers={'Authorization': f'Bearer {access_token}'}
 )
 
